@@ -20,8 +20,7 @@
 如果有匹配到对应的订阅，则进行事件回调，并且停止键盘事件的回调。按下的按键进行转换，把`mac`/`win`的键盘差异进行了兼容
 
 ## 实现效果
-
-差两个视频
+![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/fb6728f9982f45d2a30cba37cf90c800.gif)
 
 ## 核心代码
 
@@ -488,16 +487,16 @@ export function isDelete(event: KeyboardEvent) {
 
 > [在线体验](https://codepen.io/chushenshen/pen/poXaYdo)
 >
-> 代码仓库：[github]('')
+> 代码仓库：[github](https://github.com/MyPrintDesign/myprint-blogs/tree/main/keyboard-shortcuts)
 >
-> 代码仓库：[gitee]('')
+> 代码仓库：[gitee](https://gitee.com/MyPrintDesign/myprint-blogs/tree/main/keyboard-shortcuts)
 
 ## 实战项目：MyPrint
 
 > 操作简单，组件丰富的一站式打印解决方案打印设计器
 >
-> 体验地址：[前往]('https://demo.myprint.top')
+> 体验地址：[前往](https://demo.myprint.top)
 >
-> 代码仓库：[github]('')
+> 代码仓库：[github](https://github.com/MyPrintDesign/myprint)
 >
-> 代码仓库：[gitee]('')
+> 代码仓库：[gitee](https://gitee.com/MyPrintDesign/myprint)

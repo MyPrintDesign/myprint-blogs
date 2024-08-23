@@ -154,10 +154,10 @@ const elementList = ref<any[]>([{}])
 
 // 记录日志
 record(<Snapshot>{
-  type: 'Element',
-  action: ActionEnum.RESIZE,
-  elementList: elementList.value
-  });
+    type: 'Element',
+    action: ActionEnum.RESIZE,
+    elementList: elementList.value
+});
 
 // 撤销
 elementList.value = JSON.parse(JSON.stringify(undoPanel()));
@@ -168,18 +168,16 @@ elementList.value = JSON.parse(JSON.stringify(redoPanel()));
 
 ## 代码仓库
 
-> [在线体验](https://codepen.io/chushenshen/pen/poXaYdo)
+> 代码仓库：[github](https://github.com/MyPrintDesign/myprint-blogs/tree/main/operation-history)
 >
-> 代码仓库：[github]('')
->
-> 代码仓库：[gitee]('')
+> 代码仓库：[gitee](https://gitee.com/MyPrintDesign/myprint-blogs/tree/main/operation-history)
 
 ## 实战项目：MyPrint
 
 > 操作简单，组件丰富的一站式打印解决方案打印设计器
 >
-> 体验地址：[前往]('https://demo.myprint.top')
+> 体验地址：[前往](https://demo.myprint.top)
 >
-> 代码仓库：[github]('')
+> 代码仓库：[github](https://github.com/MyPrintDesign/myprint)
 >
-> 代码仓库：[gitee]('')
+> 代码仓库：[gitee](https://gitee.com/MyPrintDesign/myprint)
