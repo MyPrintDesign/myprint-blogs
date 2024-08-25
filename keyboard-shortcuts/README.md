@@ -20,7 +20,7 @@
 如果有匹配到对应的订阅，则进行事件回调，并且停止键盘事件的回调。按下的按键进行转换，把`mac`/`win`的键盘差异进行了兼容
 
 ## 实现效果
-![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/fb6728f9982f45d2a30cba37cf90c800.gif)
+<img src="https://i-blog.csdnimg.cn/direct/fb6728f9982f45d2a30cba37cf90c800.gif"/>
 
 ## 核心代码
 

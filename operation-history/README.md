@@ -1,4 +1,4 @@
-今天分享如何通过vue快速实现操作历史记录
+> 通过vueuse中的 useManualRefHistory，快速实现历史操作记录
 
 ## 所需环境：
 
