@@ -156,9 +156,19 @@ app.mount('#app')
     清空
   </button>
 </template>
-
-<style scoped>
-
-</style>
-
 ```
+## 代码仓库
+
+> 代码仓库：[github](https://github.com/MyPrintDesign/myprint-blogs/tree/main/vue-function-component)
+>
+> 代码仓库：[gitee](https://gitee.com/MyPrintDesign/myprint-blogs/tree/main/vue-function-component)
+
+## 实战项目：MyPrint
+
+> 操作简单，组件丰富的一站式打印解决方案打印设计器
+>
+> 体验地址：[前往](https://demo.myprint.top)
+>
+> 代码仓库：[github](https://github.com/MyPrintDesign/myprint)
+>
+> 代码仓库：[gitee](https://gitee.com/MyPrintDesign/myprint)
