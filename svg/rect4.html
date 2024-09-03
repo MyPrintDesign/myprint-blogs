@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyPrint|打印设计|SVG|矩形</title>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="./d3-utils.js"></script>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .chart {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        .chart_wrapper {
+            width: 700px;
+            height: 700px;
+            box-shadow: 2px 2px 10px rgba(10, 10, 10, 0.1);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="chart_wrapper">
+    <svg id="chartRef" class="chart">
+        <path class="u-path" :d="path"/>
+        <line class="u-line"/>
+        <line class="u-line"/>
+    </svg>
+</div>
+</body>
+
+<script>
+    const chartElement = document.getElementById('chartRef')
+    const path = d3.path();
+
+    function freshSvg() {
+        const x0 = 100,
+            y0 = 200,
+
+            x1 = 500,
+            y1 = 100,
+            x2 = 500,
+            y2 = 500,
+            x3 = 200,
+            y3 = 500;
+
+        const path = d3.path();
+        path.moveTo(x0, y0);
+        path.moveTo(x1, y1);
+        path.moveTo(y2, y2);
+        path.moveTo(x3, y3);
+
+        /**
+         *  控制点
+         */
+        const points = [[x0, y0], [x1, y1], [x2, y2], [x3, y3]],
+            // labels = ["Start", "Control", "End", '123'],
+            labels = [],
+            // lines = [[points[0], points[1]], [points[1], points[2]]],
+            lines = [],
+            draw = () => {
+                const path = d3.path();
+                path.moveTo(...points[0]);
+                path.lineTo(...points[1]);
+                path.lineTo(...points[2]);
+                path.lineTo(...points[3]);
+                // path.moveTo(...points[0]);
+                // path.rect(...points[1], ...points[2]);
+                path.closePath()
+
+                return path;
+            };
+
+        draggable(chartElement, points, labels, lines, draw, {fill: 'orange'});
+    }
+
+    function drag() {
+
+        function dragstarted(event, d) {
+            // console.log(d)
+            // d3Selection.select(this).raise().attr("stroke", "black");
+        }
+
+        function dragged(event, d) {
+            // console.log(d)
+            // d3Selection.select(this).attr("cx", d.x = event.x).attr("cy", d.y = event.y);
+        }
+
+        function dragended(event, d) {
+            // d3Selection.select(this).attr("stroke", null);
+        }
+
+        return d3.drag()
+            .on("start", dragstarted)
+            .on("drag", dragged)
+            .on("end", dragended);
+    }
+
+    freshSvg()
+</script>
+</html>

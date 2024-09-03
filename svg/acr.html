@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyPrint|打印设计|SVG|圆</title>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="./d3-utils.js"></script>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .chart {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        .chart_wrapper {
+            width: 700px;
+            height: 700px;
+            box-shadow: 2px 2px 10px rgba(10, 10, 10, 0.1);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="chart_wrapper">
+    <svg id="chartRef" class="chart">
+        <path class="u-path" :d="path"/>
+        <line class="u-line"/>
+        <line class="u-line"/>
+    </svg>
+</div>
+</body>
+
+<script>
+    const chartElement = document.getElementById('chartRef')
+    const path = d3.path();
+
+    function freshSvg() {
+        const x0 = 310,
+            y0 = 130,
+            x = 320,
+            y = 320,
+            radius = 100,
+            startAngle = 0,
+            endAngle = 2 * Math.PI - 1,
+            moveto00 = false,
+            anticlockwise = true;
+
+        const points = [
+                [x + radius * Math.cos(startAngle), y + radius * Math.sin(startAngle)],
+                [+radius * Math.cos(endAngle), y + radius * Math.sin(endAngle)]
+            ],
+            labels = ["开始角度", ""],
+            lines = [],
+            draw = () => {
+                const startAngle = Math.atan2(points[0][1] - x, points[0][0] - y),
+                    endAngle = 2 * Math.PI,
+                    radius = Math.sqrt((points[0][1] - x) ** 2 + (points[0][0] - y) ** 2);
+                points[0][0] = x + radius * Math.cos(startAngle);
+                points[0][1] = x + radius * Math.sin(startAngle);
+                points[1][0] = x + radius * Math.cos(endAngle);
+                points[1][1] = x + radius * Math.sin(endAngle);
+
+                const path = d3.path();
+                if (moveto00) path.moveTo(...points[2]);
+                path.arc(x, y, radius, startAngle, endAngle, anticlockwise);
+                return path;
+            };
+
+        if (moveto00) {
+            points.push([x0, y0]);
+            labels.push("⟨x0, y0⟩");
+        }
+
+        draggable(chartElement, points, labels, lines, draw);
+    }
+
+    freshSvg()
+</script>
+</html>
