@@ -176,7 +176,7 @@ elementList.value = JSON.parse(JSON.stringify(redoPanel()));
 
 > 操作简单，组件丰富的一站式打印解决方案打印设计器
 >
-> 体验地址：[前往](https://demo.myprint.top)
+> 体验地址：[前往](https://demo.cfcss.top)
 >
 > 代码仓库：[github](https://github.com/MyPrintDesign/myprint)
 >
