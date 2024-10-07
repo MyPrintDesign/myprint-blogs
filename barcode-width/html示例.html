@@ -29,14 +29,34 @@
             margin: 0 auto;
             text-align: center;
         }
-    
+
+        #barcode-wrapper {
+            background: white;
+            flex-direction: column;
+            display: flex;
+            height: 100px;
+        }
+
+        .barcode-div {
+            display: flex;
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+        }
+
+        #barcode-val {
+            color: black;
+        }
     </style>
     <script src="https://cdn.bootcdn.net/ajax/libs/jsbarcode/3.11.6/JsBarcode.all.min.js"></script>
 </head>
 <body>
 <div>
-    <div>
-        <svg id="code128"></svg>
+    <div id="barcode-wrapper">
+        <div class="barcode-div">
+            <svg id="code128" style="height: 100%" preserveAspectRatio="none"></svg>
+        </div>
+        <div id="barcode-val">Myprint-Barcode</div>
     </div>
     <input type="range" id="slider" min="100" max="1000" value="200">
     <p>当前宽度: <span id="sliderValue">200</span>px</p>
@@ -50,7 +70,7 @@
         try {
             const height = 100
             const barCodeDisplayValIs = 1
-            const fontSize = 13
+            const fontSize = 55
             const barCodeType = 'CODE128'
             const data = 'Myprint-Barcode'
             const codeLength = data.length;
@@ -88,7 +108,7 @@
                 case 'CODE128A':
                 case 'CODE128B':
                 case 'CODE128C':
-                    numBars = codeLength * 11;
+                    numBars = codeLength * 2;
                     break;
                 case 'pharmacode':
                     numBars = codeLength * 10;
@@ -109,8 +129,8 @@
             JsBarcode('#code128', data, {
                 format: barCodeType,//选择要使用的条形码类型
                 width: barWidth, //设置条之间的宽度
-                height: height - (barCodeDisplayValIs ? fontSize : 0),//高度
-                displayValue: barCodeDisplayValIs,//是否在条形码下方显示文字
+                height: height,//高度
+                displayValue: false,//是否在条形码下方显示文字
                 //   text:"456",//覆盖显示的文本
                 //   fontOptions:"bold italic",//使文字加粗体或变斜体
                 //   font:"fantasy",//设置文本的字体
@@ -122,7 +142,7 @@
                 lineColor: 'black',//设置条和文本的颜色。
                 margin: 0//设置条形码周围的空白边距
             });
-
+            document.getElementById('code128').style.height = '100%';
         } catch (e) {
             console.log('不支持的内容')
         }
@@ -132,10 +152,13 @@
 
     const slider = document.getElementById('slider');
     const sliderValue = document.getElementById('sliderValue');
+    const barcodeWrapper = document.getElementById('barcode-wrapper');
+    barcodeWrapper.style.width = width + 'px'
 
     slider.addEventListener('input', function () {
         width = slider.value
         sliderValue.textContent = slider.value;
+        barcodeWrapper.style.width = width + 'px'
         freshBarCode();
     });
 </script>
